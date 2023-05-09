@@ -17,73 +17,73 @@ app.use(cookieParser())
 app.use(cors())
 
 
-//     app.get("/",(req,res)=>{
-//         res.send("Hey google")
-//     })
-//     app.get("/google",(req,res)=>{
-//         res.send("Hey goggle")
-//     })
-//     app.get("/gitlogin",(req,res)=>{
-//         res.sendFile(__dirname+"/github.html")
-//     })
-//     app.get("/auth/github",async(req,res)=>{
-//         const {code}=req.query
-//         console.log(code)
-//        const accessToken= await fetch("https://github.com/login/oauth/access_token",{
-//             method:"POST",
-//             headers:{
-//                 Accept:"application/json",
-//                 "content-type":"application/json"
-//             },
-//             body:JSON.stringify({
-//               client_id:c_id,
-//               client_secret:client_secret,
-//               code:code,  
-//             })
-//         }).then((res)=>res.json())
-//         const user=await fetch("https://api.github.com/user",{
-//             headers:{
-//                 Authorization:`Bearer ${accessToken.access_token}`
-//             }
-//         }).then((res)=>res.json())
-//         const useremailis = await fetch("https://api.github.com/user/emails", {
-//             headers : {
-//                 Authorization : `Bearer ${accessToken.access_token}`
-//             }
-//         })
-//         .then((res) => res.json())
-//         .catch((err) => console.log(err))
+    app.get("/",(req,res)=>{
+        res.send("Hey google")
+    })
+    app.get("/google",(req,res)=>{
+        res.send("Hey goggle")
+    })
+    app.get("/gitlogin",(req,res)=>{
+        res.sendFile(__dirname+"/github.html")
+    })
+    app.get("/auth/github",async(req,res)=>{
+        const {code}=req.query
+        console.log(code)
+       const accessToken= await fetch("https://github.com/login/oauth/access_token",{
+            method:"POST",
+            headers:{
+                Accept:"application/json",
+                "content-type":"application/json"
+            },
+            body:JSON.stringify({
+              client_id:c_id,
+              client_secret:client_secret,
+              code:code,  
+            })
+        }).then((res)=>res.json())
+        const user=await fetch("https://api.github.com/user",{
+            headers:{
+                Authorization:`Bearer ${accessToken.access_token}`
+            }
+        }).then((res)=>res.json())
+        const useremailis = await fetch("https://api.github.com/user/emails", {
+            headers : {
+                Authorization : `Bearer ${accessToken.access_token}`
+            }
+        })
+        .then((res) => res.json())
+        .catch((err) => console.log(err))
     
-//         console.log(useremailis)
-//         res.send("Sigin from github")
-//     })
+        console.log(useremailis)
+        res.send("Sigin from github")
+    })
     
-//               /////Google///////
-//     app.get("/",(req,res)=>{
-//       res.send("Hello from nodejs application")
-//     })
-//     app.get("/googlelogin",(req,res)=>{
-//       res.sendFile(__dirname+"/google.html")
-//     })
-//     app.get('/auth/google',
-//       passport.authenticate('google', { scope: ['profile','email'] }));
+              /////Google///////
+    app.get("/",(req,res)=>{
+      res.send("Hello from nodejs application")
+    })
+    app.get("/googlelogin",(req,res)=>{
+      res.sendFile(__dirname+"/google.html")
+    })
+    app.get('/auth/google',
+      passport.authenticate('google', { scope: ['profile','email'] }));
     
-//     app.get('/auth/google/callback', 
-//       passport.authenticate('google', { failureRedirect: '/login' ,session:false}),
-//       function(req, res) {
-//         // Successful authentication, redirect home.
-//         console.log(req.user)
-//         res.redirect('/');
-//       });
-//       console.log(email)
-//  if(email){
-//       app.use(googlemailauth)
-//       app.use("fetchroutes",fetchRouter)
-// }else{
+    app.get('/auth/google/callback', 
+      passport.authenticate('google', { failureRedirect: '/login' ,session:false}),
+      function(req, res) {
+        // Successful authentication, redirect home.
+        console.log(req.user)
+        res.redirect('/');
+      });
+      console.log(email)
+ if(email){
+      app.use(googlemailauth)
+      app.use("/fetchroutes",fetchRouter)
+}else{
     app.use("/user",UserRouter)
     app.use(auth)
-    app.use("fetchroutes",fetchRouter)
-// }
+    app.use("/fetchroutes",fetchRouter)
+}
 
 
 
