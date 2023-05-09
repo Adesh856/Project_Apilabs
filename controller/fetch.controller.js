@@ -3,7 +3,7 @@ const {Fetchmodel} = require("../model/fetch.model")
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 const fetchapiroute=async(req,res)=>{
-    let  {method,payload,url,headers} = req.body;
+    let  {method,payload,url} = req.body;
     
     console.log(JSON.stringify(payload))
     console.log(req.body)
@@ -11,13 +11,13 @@ const fetchapiroute=async(req,res)=>{
       
     // ///GET
     if(method==="GET"){
-        const saveFetchedData =new Fetchmodel({userId:req.userId,requestApi:url,method:url,headers})
+        const saveFetchedData =new Fetchmodel({userId:req.userId,requestApi:url,method:url})
         await saveFetchedData.save()
   fetch(url,{
    
     headers:{
         "Content-Type":"application/json",
-       
+  
     }
   }).then((res)=>res.json()).then((data)=>{
     console.log(data)
