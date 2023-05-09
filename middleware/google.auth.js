@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require('uuid');
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:8887/auth/google/callback"
+    callbackURL: "https://rich-gray-hatchling-tutu.cyclic.app/auth/google/callback"
   },
  async function(accessToken, refreshToken, profile, cb) {
     console.log(profile._json.email)
