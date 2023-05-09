@@ -82,7 +82,7 @@ app.use(cors())
 // }else{
     app.use("/user",UserRouter)
     // app.use(auth)
-    // app.use("/fetchroutes",fetchRouter)
+    app.use("/fetchroutes",fetchRouter)
 // }
 
 
