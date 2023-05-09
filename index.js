@@ -6,6 +6,7 @@ const {connection} = require("./db.js")
 const {UserRouter} = require("./routes/user.routes.js")
 const {auth} = require("./middleware/auth.middleware.js")
 const {fetchRouter} = require("./routes/fetch.routes.js")
+const cors = require("cors")
 const {passport,flag,googlemailauth, email} = require("./middleware/google.auth.js")
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
  const c_id="51f8f470acf4c4a14934"
@@ -13,7 +14,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 app.use(express.json())
 app.use(cookieParser())
-
+app.use(cors())
 
 
     app.get("/",(req,res)=>{
