@@ -4,13 +4,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 const fetchapiroute=async(req,res)=>{
     let  {method,payload,url,headers} = req.body;
-    const {
-        key1,
-        key2,
-        key3,
-        val1,
-        val2,val3,
-      } = headers
+    
     console.log(JSON.stringify(payload))
     console.log(req.body)
     try {
@@ -23,9 +17,7 @@ const fetchapiroute=async(req,res)=>{
    
     headers:{
         "Content-Type":"application/json",
-        key1:val1,
-        key2:val2,
-        key3:val3
+       
     }
   }).then((res)=>res.json()).then((data)=>{
     console.log(data)
@@ -43,9 +35,7 @@ const fetchapiroute=async(req,res)=>{
         method:"POST",
         headers:{
             "Content-Type":"application/json",
-            key1:val1,
-            key2:val2,
-            key3:val3
+           
         },
         body:JSON.stringify(payload)
       }
@@ -65,9 +55,7 @@ const fetchapiroute=async(req,res)=>{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json",
-                key1:val1,
-                key2:val2,
-                key3:val3
+               
             },
             body:JSON.stringify(payload)
           }
@@ -87,9 +75,7 @@ const fetchapiroute=async(req,res)=>{
             method:"PATCH",
             headers:{
                 "Content-Type":"application/json",
-                key1:val1,
-                key2:val2,
-                key3:val3
+               
             },
             body:JSON.stringify(payload)
           }
@@ -108,9 +94,7 @@ const fetchapiroute=async(req,res)=>{
         method:"DELETE",
         headers:{
             "Content-Type":"application/json",
-            key1:val1,
-            key2:val2,
-            key3:val3
+          
         }
       }
       ).then((res)=>res.json()).then((newdata)=>{
